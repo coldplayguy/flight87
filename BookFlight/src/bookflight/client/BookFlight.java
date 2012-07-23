@@ -54,6 +54,7 @@ public class BookFlight implements EntryPoint {
 	private PopupPanel cal2pop = new PopupPanel();
 	private DatePicker leavedatePicker = new DatePicker();
 	private DatePicker returndatePicker = new DatePicker();
+	private AbsolutePanel absolutePanel = new AbsolutePanel();
 
 	public void onModuleLoad() {
 		// TEST SUGGESTBOX STUFF
@@ -76,10 +77,15 @@ public class BookFlight implements EntryPoint {
 
 								MultiWordSuggestOracle oracle = new MultiWordSuggestOracle();
 								oracle.addAll(Arrays.asList(airports));
-								oracle.add("Hello");
+								//oracle.add("Hello");
 
-								//fromairporttext = new SuggestBox(oracle);
-								//toairporttext = new SuggestBox(oracle);
+								fromairporttext = new SuggestBox(oracle);
+								toairporttext = new SuggestBox(oracle);
+								
+								absolutePanel.add(fromairporttext, 165, 24);
+								fromairporttext.setSize("159px", "18px");
+								absolutePanel.add(toairporttext, 165, 61);
+								toairporttext.setSize("159px", "18px");
 
 							}
 						}
@@ -92,8 +98,8 @@ public class BookFlight implements EntryPoint {
 		tpanel.add(vpanel2, "Find Flights"); // Adds Book Flights Panel
 		tpanel.selectTab(0);
 		vpanel.setSize("156px", "255px");
+		
 
-		AbsolutePanel absolutePanel = new AbsolutePanel();
 		vpanel.add(absolutePanel);
 		absolutePanel.setSize("414px", "249px");
 		fromairport.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
@@ -139,12 +145,6 @@ public class BookFlight implements EntryPoint {
 		numpassengers.addItem("9");
 		numpassengers.addItem("10");
 		absolutePanel.add(numpassengers, 164, 170);
-
-		absolutePanel.add(fromairporttext, 165, 24);
-		fromairporttext.setSize("159px", "18px");
-
-		absolutePanel.add(toairporttext, 165, 61);
-		toairporttext.setSize("159px", "18px");
 
 		final TextBox leavedatebox = new TextBox();
 		absolutePanel.add(leavedatebox, 165, 97);
